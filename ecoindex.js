@@ -108,7 +108,7 @@ ecoindex = function(dom, resources)
 	var eau = computeWaterConsumptionfromEcoIndex(ecoIndex)
 
 	// Affichage dans la barre d'admin
-	var ecotitle = 'ecoIndex: '+ ecoIndex.toFixed(2) + (p100error>0?' ('+Math.round(p100error)+'% d\'erreur)':'') +' | GES: '+ges+' gCO2e | eau: '+eau+' cl | Nombre de requêtes: '+req+' | Taille de la page: '+size+' Ko | Taille du DOM: '+dom;
+	var ecotitle = 'ecoIndex: '+ ecoIndex.toFixed(2) + (p100error>0?' (*'+Math.round(p100error)+'% d\'erreur)':'') +' | GES: '+ges+' gCO2e | eau: '+eau+' cl | Nombre de requêtes: '+req+' | Taille de la page: '+size+' Ko | Taille du DOM: '+dom;
 
 	// Style de la gélule d'affichage d'ecoindex
 	var style = document.createElement('style');
