@@ -1,7 +1,5 @@
 // ECOINDEX
 // http://www.ecoindex.fr/quest-ce-que-ecoindex/
-// Lance la mesure de ecoindex quand la page est fini de charger
-
 
 /*
 * Pour plus d'informations sur ecoindex : 
@@ -68,6 +66,9 @@ function computeWaterConsumptionfromEcoIndex(ecoIndex)
 }
 
 
+
+// Code additionnel pour donner les variables pour le calcul
+
 // Donne le ecoindex
 ecoindex = function(dom, resources)
 {
@@ -104,7 +105,7 @@ ecoindex = function(dom, resources)
 	    size = size + size_file;
 
 	    //console.log(resource);
-	    console.log(req+' : '+size_file+'Ko | '+resource.transferSize+' | '+resource.initiatorType+' | '+resource.name);
+	    //console.log(req+' : '+size_file+'Ko | '+resource.transferSize+' | '+resource.initiatorType+' | '+resource.name);
 	});
 
 
@@ -114,21 +115,24 @@ ecoindex = function(dom, resources)
 	var ges = computeGreenhouseGasesEmissionfromEcoIndex(ecoIndex)
 	var eau = computeWaterConsumptionfromEcoIndex(ecoIndex)
 
-	// Log
-	console.log("ecoIndex: " + ecoIndex);
-	console.log("EcoIndexGrade: " + EcoIndexGrade);
-	console.log("ges: " + ges);
-	console.log("eau: " + eau);
-	console.log("dom: " + dom);
-	console.log("req: " + req);
-	console.log("size: " + size);
-
-
 	// Affichage dans la barre d'admin
-	var ecotitle = 'ecoIndex: '+ecoIndex+' | GES: '+ges+' gCO2e | eau: '+eau+' cl | Nombre de requêtes: '+req+' | Taille de la page: '+size+' Ko | Taille du DOM: '+dom;
+	var ecotitle = 'ecoIndex: '+ecoIndex.toFixed(2)+' | GES: '+ges+' gCO2e | eau: '+eau+' cl | Nombre de requêtes: '+req+' | Taille de la page: '+size+' Ko | Taille du DOM: '+dom;
+
+	// Style de la gélule d'affichage d'ecoindex
+	var style = document.createElement('style');
+	document.head.appendChild(style);
+	style.sheet.insertRule('#ecoindex { background: #ffffffcc; padding: 5px 8px; border-radius: 10px; position: absolute; z-index: 10; bottom: 10px;}');
+	style.sheet.insertRule('#ecoindex span { display: inline-block; width: 18px; height: 18px; font-size: 12px; line-height: 18px; margin: 0.1rem 0 0 0.5rem; text-align: center; border-radius: 50%; background-color: #f00; }');
+	style.sheet.insertRule('#ecoindex span.A { background-color: #349A47; color: #fff; }');
+	style.sheet.insertRule('#ecoindex span.B { background-color: #51B84B; color: #fff; }');
+	style.sheet.insertRule('#ecoindex span.C { background-color: #CADB2A; color: black; }');
+	style.sheet.insertRule('#ecoindex span.D { background-color: #F6EB15; color: black; }');
+	style.sheet.insertRule('#ecoindex span.E { background-color: #FECD06; color: black; }');
+	style.sheet.insertRule('#ecoindex span.F { background-color: #F99839; color: #fff; }');
+	style.sheet.insertRule('#ecoindex span.G { background-color: #ED2124; color: #fff; }');
 
 	// Ajout de la note dans la barre d'admin
-	//<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/"  id="ecoindex" target="_blank" title="'+ecotitle+'">ecoIndex <span class="'+EcoIndexGrade+'">'+EcoIndexGrade+'</span></a>');
+	document.body.innerHTML = document.body.innerHTML + '<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/" id="ecoindex" target="_blank" title="'+ecotitle+'">ecoIndex<span class="'+EcoIndexGrade+'">'+EcoIndexGrade+'</span></a>';
 		
 }
 

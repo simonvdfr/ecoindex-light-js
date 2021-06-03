@@ -7,8 +7,8 @@ Pour informer l'utilisateur de l'impact de la page en cours.
 ## Licences
 
 Les fonctions de calcul viennent de [GreenIT-Analysis](https://github.com/cnumr/GreenIT-Analysis/).
-`Copyright (C) 2019 didierfred@gmail.com / GNU Affero General Public License AGPL v3`
+`GNU Affero General Public License AGPL v3 / Copyright (C) 2019 didierfred@gmail.com`
 
 L'algorithme [EcoIndex](http://www.ecoindex.fr/quest-ce-que-ecoindex/) est sous [Licence Creative Commons CC-By-NC-ND](https://creativecommons.org/licenses/by-nc-nd/2.0/fr/)
 
-Le code additionnel pour donner les variables pour le calcul est sous licence MIT par Simon Vandaele [Translucide](http://www.translucide.net)
+Le code additionnel pour donner les variables pour le calcul est sous `licence MIT` par Simon Vandaele [Translucide](http://www.translucide.net)
