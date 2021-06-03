@@ -7,7 +7,7 @@ Pour informer l'utilisateur de l'impact de la page en cours.
 
 ## Installation
 
-Ajouter à votre page html `<script src="https://cdn.jsdelivr.net/gh/simonvdfr/ecoindex-light-js/ecoindex.min.js"></script>`
+Ajouter à votre page html `<script src="https://cdn.jsdelivr.net/gh/simonvdfr/ecoindex-light-js@main/ecoindex.min.js"></script>`
 
 
 ## Licences

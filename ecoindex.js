@@ -108,12 +108,12 @@ ecoindex = function(dom, resources)
 	var eau = computeWaterConsumptionfromEcoIndex(ecoIndex)
 
 	// Affichage dans la barre d'admin
-	var ecotitle = 'ecoIndex: '+ ecoIndex.toFixed(2) + (p100error>0?' ('+p100error+'% d\'erreur)':'') +' | GES: '+ges+' gCO2e | eau: '+eau+' cl | Nombre de requêtes: '+req+' | Taille de la page: '+size+' Ko | Taille du DOM: '+dom;
+	var ecotitle = 'ecoIndex: '+ ecoIndex.toFixed(2) + (p100error>0?' ('+Math.round(p100error)+'% d\'erreur)':'') +' | GES: '+ges+' gCO2e | eau: '+eau+' cl | Nombre de requêtes: '+req+' | Taille de la page: '+size+' Ko | Taille du DOM: '+dom;
 
 	// Style de la gélule d'affichage d'ecoindex
 	var style = document.createElement('style');
 	document.head.appendChild(style);
-	style.sheet.insertRule('#ecoindex { background: #ffffffcc; padding: 5px 8px; border-radius: 10px; position: absolute; z-index: 10; bottom: 10px;}');
+	style.sheet.insertRule('#ecoindex { background: #ffffffcc; padding: 5px 8px; border-radius: 10px; position: absolute; z-index: 10; left: 10px; bottom: 10px;}');
 	style.sheet.insertRule('#ecoindex span { display: inline-block; width: 18px; height: 18px; font-size: 12px; line-height: 18px; margin: 0.1rem 0 0 0.5rem; text-align: center; border-radius: 50%; background-color: #f00; }');
 	style.sheet.insertRule('#ecoindex span.A { background-color: #349A47; color: #fff; }');
 	style.sheet.insertRule('#ecoindex span.B { background-color: #51B84B; color: #fff; }');
