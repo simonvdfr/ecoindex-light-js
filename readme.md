@@ -4,6 +4,12 @@ Version bêta pour mesurer l'ecoindex de la page en cours.
 Le but de ce script est de faire une mesure avec très peu de code javascript simple, pour se rapprocher le plus possible d'un indice similaire à ecoindex.
 Pour informer l'utilisateur de l'impact de la page en cours.
 
+
+## Installation
+
+Ajouter à votre page html `<script src="https://cdn.jsdelivr.net/gh/simonvdfr/ecoindex-light-js/ecoindex.min.js"></script>`
+
+
 ## Licences
 
 Les fonctions de calcul viennent de [GreenIT-Analysis](https://github.com/cnumr/GreenIT-Analysis/).
