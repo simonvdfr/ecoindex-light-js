@@ -73,8 +73,7 @@ function computeWaterConsumptionfromEcoIndex(ecoIndex)
 ecoindex = function(dom, resources)
 {
 	// Mesure le nombre de REQUETTE
-	var size = 0;
-	var req = 0;
+	var size = req = error = 0;
 
 	// Parcours les ressources pour le nombre de requette et leur poids
 	resources.forEach(function(resource) 
@@ -84,17 +83,9 @@ ecoindex = function(dom, resources)
 
 	    // Poids du fichier en octets typeof resource.transferSize !== 'undefined' && 
 	    var size_file = 0;
-	    if(resource.transferSize == 0)// Si la boucle n'arrive pas à lire le poids du fichier
-	    {
-		    var request = new XMLHttpRequest();
-		    request.open("HEAD", resource.name, false);
-		    request.send(null);
-			//request.getResponseHeader('content-length');
-			/Content\-Length\s*:\s*(\d+)/i.exec(request.getAllResponseHeaders());
-		    size_file = parseInt(RegExp.$1);
 
-		    // @todo : Gerer les cas ou il n'y a pas de content-length
-	    }
+	    // Si la boucle n'arrive pas à lire le poids du fichier on ajoute un % d'erreur
+	    if(resource.transferSize == 0) error++;
 	    else size_file = resource.transferSize;
 
 	    // Poids en Ko
@@ -110,13 +101,14 @@ ecoindex = function(dom, resources)
 
 
 	// Résultat
+	var p100error = error * 100 / req;
 	var ecoIndex = computeEcoIndex(dom, req, size);
 	var EcoIndexGrade = getEcoIndexGrade(ecoIndex)
 	var ges = computeGreenhouseGasesEmissionfromEcoIndex(ecoIndex)
 	var eau = computeWaterConsumptionfromEcoIndex(ecoIndex)
 
 	// Affichage dans la barre d'admin
-	var ecotitle = 'ecoIndex: '+ecoIndex.toFixed(2)+' | GES: '+ges+' gCO2e | eau: '+eau+' cl | Nombre de requêtes: '+req+' | Taille de la page: '+size+' Ko | Taille du DOM: '+dom;
+	var ecotitle = 'ecoIndex: '+ ecoIndex.toFixed(2) + (p100error>0?' ('+p100error+'% d\'erreur)':'') +' | GES: '+ges+' gCO2e | eau: '+eau+' cl | Nombre de requêtes: '+req+' | Taille de la page: '+size+' Ko | Taille du DOM: '+dom;
 
 	// Style de la gélule d'affichage d'ecoindex
 	var style = document.createElement('style');
@@ -132,7 +124,7 @@ ecoindex = function(dom, resources)
 	style.sheet.insertRule('#ecoindex span.G { background-color: #ED2124; color: #fff; }');
 
 	// Ajout de la note dans la barre d'admin
-	document.body.innerHTML = document.body.innerHTML + '<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/" id="ecoindex" target="_blank" title="'+ecotitle+'">ecoIndex<span class="'+EcoIndexGrade+'">'+EcoIndexGrade+'</span></a>';
+	document.body.innerHTML = document.body.innerHTML + '<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/" id="ecoindex" target="_blank" title="'+ecotitle+'">ecoIndex<span class="'+EcoIndexGrade+'">'+EcoIndexGrade+(p100error>0?'*':'')+'</span></a>';
 		
 }
 
