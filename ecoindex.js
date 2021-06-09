@@ -89,8 +89,7 @@ ecoindex = function(dom, resources)
 	    else size_file = resource.transferSize;
 
 	    // Poids en Ko
-	    //size_file = Math.ceil(size_file / 1024);// Taille en Ko
-	    size_file = Math.round(size_file / 1000);// Taille en Ko => même calcule que GreenIT-Analysis (mais moins précis)
+	    size_file = Math.round(size_file / 1000);
 
 	    // Poids total de fichier
 	    size = size + size_file;
