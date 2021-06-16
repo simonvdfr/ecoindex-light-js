@@ -113,18 +113,19 @@ ecoindex = function(dom, resources)
 	var style = document.createElement('style');
 	document.head.appendChild(style);
 	style.sheet.insertRule('#ecoindex { background: #ffffffcc; padding: 5px 8px; border-radius: 10px; position: fixed; z-index: 10; left: 10px; bottom: 10px;}');
-	style.sheet.insertRule('#ecoindex span { display: inline-block; width: 18px; height: 18px; font-size: 12px; line-height: 18px; margin: 0.1rem 0 0 0.5rem; text-align: center; border-radius: 50%; background-color: #f00; }');
-	style.sheet.insertRule('#ecoindex span.A { background-color: #349A47; color: #fff; }');
-	style.sheet.insertRule('#ecoindex span.B { background-color: #51B84B; color: #fff; }');
-	style.sheet.insertRule('#ecoindex span.C { background-color: #CADB2A; color: black; }');
-	style.sheet.insertRule('#ecoindex span.D { background-color: #F6EB15; color: black; }');
-	style.sheet.insertRule('#ecoindex span.E { background-color: #FECD06; color: black; }');
-	style.sheet.insertRule('#ecoindex span.F { background-color: #F99839; color: #fff; }');
-	style.sheet.insertRule('#ecoindex span.G { background-color: #ED2124; color: #fff; }');
+	style.sheet.insertRule('#ecoindex span { display: inline-block; width: 18px; height: 18px; font-size: 12px; line-height: 18px; margin: 0.1rem 0 0 0.5rem; text-align: center; border-radius: 50%; }');
+
+	if(EcoIndexGrade == 'A') style.sheet.insertRule('#ecoindex span { background-color: #349A47; color: #fff; }');
+	else if(EcoIndexGrade == 'B') style.sheet.insertRule('#ecoindex span { background-color: #51B84B; color: #fff; }');
+	else if(EcoIndexGrade == 'C') style.sheet.insertRule('#ecoindex span { background-color: #CADB2A; color: black; }');
+	else if(EcoIndexGrade == 'D') style.sheet.insertRule('#ecoindex span { background-color: #F6EB15; color: black; }');
+	else if(EcoIndexGrade == 'E') style.sheet.insertRule('#ecoindex span { background-color: #FECD06; color: black; }');
+	else if(EcoIndexGrade == 'F') style.sheet.insertRule('#ecoindex span { background-color: #F99839; color: #fff; }');
+	else if(EcoIndexGrade == 'G') style.sheet.insertRule('#ecoindex span { background-color: #ED2124; color: #fff; }');
+	else style.sheet.insertRule('#ecoindex span { background-color: #ED2124; color: #fff; }');
 
 	// Ajout de la note dans la barre d'admin
-	document.body.innerHTML = document.body.innerHTML + '<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/" id="ecoindex" target="_blank" title="'+ecotitle+'">ecoIndex<span class="'+EcoIndexGrade+'">'+EcoIndexGrade+(p100error>0?'*':'')+'</span></a>';
-		
+	document.body.insertAdjacentHTML('beforeend', '<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/" id="ecoindex" target="_blank" title="'+ecotitle+'">ecoIndex<span>'+EcoIndexGrade+(p100error>0?'*':'')+'</span></a>')
 }
 
 
