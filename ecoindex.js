@@ -1,6 +1,3 @@
-// ECOINDEX
-// http://www.ecoindex.fr/quest-ce-que-ecoindex/
-
 /*
 * Pour plus d'informations sur ecoindex : 
 * http://www.ecoindex.fr/quest-ce-que-ecoindex/
@@ -148,7 +145,7 @@ ecoindex = function(dom, resources)
 
 
 	// Ajout de la note dans la barre d'admin
-	document.body.insertAdjacentHTML('beforeend', '<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/" id="ecoindex" target="_blank" title="'+ecotitle+'">ecoIndex<span>'+EcoIndexGrade+(p100error>0?'*':'')+'</span></a>')
+	document.body.insertAdjacentHTML('beforeend', '<a href="http://www.ecoindex.fr/quest-ce-que-ecoindex/" id="ecoindex" target="_blank" rel="noreferrer" title="'+ecotitle+'">ecoIndex<span>'+EcoIndexGrade+(p100error>0?'*':'')+'</span></a>')
 }
 
 
