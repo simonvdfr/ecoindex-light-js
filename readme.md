@@ -10,6 +10,11 @@ Pour informer l'utilisateur de l'impact de la page en cours.
 Ajouter à votre page html `<script src="https://cdn.jsdelivr.net/gh/simonvdfr/ecoindex-light-js@main/ecoindex.min.js"></script>`
 
 
+## Marge d'erreur
+
+Si un petit astérisque (*) apparaît à côté de la note c'est que le script n'a pas réussi à mesurer le poids de certaines ressources (souvent des ressources externes au domaine)
+
+
 ## Licences
 
 Les fonctions de calcul viennent de [GreenIT-Analysis](https://github.com/cnumr/GreenIT-Analysis/).
